@@ -47,14 +47,14 @@ fun CoilImage() {
         val painter = rememberImagePainter(
             data = "https://cdn.pixabay.com/photo/2021/08/28/18/09/common-heather-6581569_960_720.jpg",
             builder = {
-
+                placeholder(R.drawable.ic_launcher_background)
             }
         )
         val painterState = painter.state
         Image(painter = painter, contentDescription = "Logo Image")
-        if (painterState is ImagePainter.State.Loading) {
-            CircularProgressIndicator()
-        }
+//        if (painterState is ImagePainter.State.Loading) {
+//            CircularProgressIndicator()
+//        }
     }
 }
 
