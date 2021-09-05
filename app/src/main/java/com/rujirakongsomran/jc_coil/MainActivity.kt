@@ -5,12 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.annotation.ExperimentalCoilApi
+import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.rujirakongsomran.jc_coil.ui.theme.JC_CoilTheme
 
@@ -31,6 +34,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalCoilApi
 @Composable
 fun CoilImage() {
     Box(
@@ -46,15 +50,14 @@ fun CoilImage() {
 
             }
         )
+        val painterState = painter.state
         Image(painter = painter, contentDescription = "Logo Image")
+        if (painterState is ImagePainter.State.Loading) {
+            CircularProgressIndicator()
+        }
     }
 }
 
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
 
 @Preview(showBackground = true)
 @Composable
