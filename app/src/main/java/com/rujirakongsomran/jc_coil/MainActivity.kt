@@ -45,9 +45,10 @@ fun CoilImage() {
     ) {
 
         val painter = rememberImagePainter(
-            data = "https://cdn.pixabay.com/photo/2021/08/28/18/09/common-heather-6581569_960_720.jpg",
+            data = "https://cdn.pixabay.com/photo/2021/08/28/18/09/common-heather-6581569_960",
             builder = {
-                placeholder(R.drawable.ic_launcher_background)
+                placeholder(R.drawable.placeholder)
+                error(R.drawable.error)
                 crossfade(1000)
             }
         )
