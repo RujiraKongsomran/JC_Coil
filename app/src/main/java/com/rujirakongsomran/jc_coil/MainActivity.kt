@@ -48,6 +48,7 @@ fun CoilImage() {
             data = "https://cdn.pixabay.com/photo/2021/08/28/18/09/common-heather-6581569_960_720.jpg",
             builder = {
                 placeholder(R.drawable.ic_launcher_background)
+                crossfade(1000)
             }
         )
         val painterState = painter.state
