@@ -10,11 +10,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
+import coil.transform.BlurTransformation
+import coil.transform.CircleCropTransformation
+import coil.transform.GrayscaleTransformation
+import coil.transform.RoundedCornersTransformation
 import com.rujirakongsomran.jc_coil.ui.theme.JC_CoilTheme
 
 class MainActivity : ComponentActivity() {
@@ -45,11 +50,17 @@ fun CoilImage() {
     ) {
 
         val painter = rememberImagePainter(
-            data = "https://cdn.pixabay.com/photo/2021/08/28/18/09/common-heather-6581569_960",
+            data = "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_960_720.jpg",
             builder = {
                 placeholder(R.drawable.placeholder)
                 error(R.drawable.error)
                 crossfade(1000)
+                transformations(
+                    GrayscaleTransformation(),
+//                    CircleCropTransformation(),
+                    BlurTransformation(LocalContext.current),
+                    RoundedCornersTransformation(50f)
+                )
             }
         )
         val painterState = painter.state
